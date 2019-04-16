@@ -31,13 +31,13 @@ class Edit extends Component {
     });
   }
 
-  onChange = (e) => {
+  onChange(e)  {
     const state = this.state
     state[e.target.name] = e.target.value;
     this.setState({board:state});
   }
 
-  onSubmit = (e) => {
+  onSubmit(e) {
     e.preventDefault();
 
     const { title, description, author } = this.state;
@@ -72,18 +72,18 @@ class Edit extends Component {
           </div>
           <div class="panel-body">
             <h4><Link to={`/show/${this.state.key}`} class="btn btn-primary">Board List</Link></h4>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit.bind(this)}>
               <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange} placeholder="Title" />
+                <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange.bind(this)} placeholder="Title" />
               </div>
               <div class="form-group">
                 <label for="description">Description:</label>
-                <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Description" />
+                <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange.bind(this)} placeholder="Description" />
               </div>
               <div class="form-group">
                 <label for="author">Author:</label>
-                <input type="text" class="form-control" name="author" value={this.state.author} onChange={this.onChange} placeholder="Author" />
+                <input type="text" class="form-control" name="author" value={this.state.author} onChange={this.onChange.bind(this)} placeholder="Author" />
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

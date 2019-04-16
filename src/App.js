@@ -13,7 +13,7 @@ class App extends Component {
     };
   }
 
-  onCollectionUpdate = (querySnapshot) => {
+  onCollectionUpdate(querySnapshot) {
     const boards = [];
     querySnapshot.forEach((doc) => {
       const { title, description, author } = doc.data();
@@ -25,27 +25,29 @@ class App extends Component {
         author,
       });
     });
+    // TODO
     this.setState({
       boards
-   });
+    })
+      ;
   }
 
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate.bind(this));
   }
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               BOARD LIST
             </h3>
           </div>
-          <div class="panel-body">
-            <h4><Link to="/create" class="btn btn-primary">Add Board</Link></h4>
-            <table class="table table-stripe">
+          <div className="panel-body">
+            <h4><Link to="/create">Add Board</Link></h4>
+            <table className="table table-stripe">
               <thead>
                 <tr>
                   <th>Title</th>
